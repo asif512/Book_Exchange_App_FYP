@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./fonts.scss";
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
