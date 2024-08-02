@@ -1,1 +1,0 @@
-export { default } from "file:///home/lazycoder/Desktop/Projects/moxieinstitute/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
