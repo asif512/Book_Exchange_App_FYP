@@ -1,0 +1,1 @@
+export { default } from "file:///home/lazycoder/Desktop/Projects/Book_Exchange_App_FYP/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"

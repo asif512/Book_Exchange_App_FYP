@@ -1,17 +1,18 @@
 <template>
   <NuxtLayout>
     <Header></Header>
-    <NuxtPage></NuxtPage>
-    <Footer></Footer>
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 pb-10">
+      <NuxtPage></NuxtPage>
+    </div>
   </NuxtLayout>
 </template>
 <script setup lang="ts">
 useHead({
-  title: "Moxie Institute",
-  meta: [
-    { name: "robots", content: "noindex,nofollow" },
-    { name: "googlebot", content: "noindex,nofollow" },
-  ],
+  title: "Books Exchange App",
+  // meta: [
+  //   { name: "robots", content: "noindex,nofollow" },
+  //   { name: "googlebot", content: "noindex,nofollow" },
+  // ],
   link: [
     {
       rel: 'stylesheet',
