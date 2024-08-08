@@ -8,8 +8,8 @@
             </div>
             <div class="max-w-xl px-3 py-4">
               <div class="flex items-center gap-x-4 text-xs">
-                <time :datetime="post.datetime" class="text-gray-500">{{ post.date }}</time>
-                <a :href="post.category.href" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ post.category.title }}</a>
+                <time  class="text-gray-500">{{ post.date }}</time>
+                <div class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ post.category }}</div>
               </div>
               <div class="group relative">
                 <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
