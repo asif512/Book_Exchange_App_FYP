@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout>
-    <Header></Header>
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 pb-10">
+    <!-- <Header></Header> -->
+    <div class="">
       <NuxtPage></NuxtPage>
     </div>
   </NuxtLayout>

@@ -9,8 +9,6 @@ module.exports = {
     "./error.vue",
   ],
   theme: {
-    colors: {
-    },
     extend: {
       fontFamily: {
         sans: ['Nunito Sans', 'Roboto', 'sans-serif'],
