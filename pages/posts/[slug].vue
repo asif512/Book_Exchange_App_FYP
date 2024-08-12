@@ -7,7 +7,7 @@
           <div class="w-full lg:max-w-lg lg:flex-auto">
   
             <img
-              :src="post.imageUrl"
+              :src="`/images/${post.imageUrl}.png`"
               alt=""
               class="mt-16 aspect-[6/5] w-full rounded-2xl bg-gray-50 object-cover"
                />
