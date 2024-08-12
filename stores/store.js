@@ -4,6 +4,7 @@ export const userStore = defineStore('store', {
   state: () => ({
     message: 'hello world',
     activePostsStatus: 'home',
+    userStatus: 'all',
     isShowPostModal: false,
     posts: [
       {
@@ -199,6 +200,12 @@ export const userStore = defineStore('store', {
           name: 'Michael Foster',
         },
       },
+    ],
+    users: [
+      { id: 1, name: 'john', email: 'johd@gmail.com', avatar: '', status: 'active', phone_number: '123-456-789' },
+      { id: 2, name: 'john', email: 'johd@gmail.com', avatar: '', status: 'active', phone_number: '123-456-789' },
+      { id: 3, name: 'john', email: 'johd@gmail.com', avatar: '', status: 'pending', phone_number: '123-456-789' },
+      { id: 4, name: 'john', email: 'johd@gmail.com', avatar: '', status: 'active', phone_number: '123-456-789' }
     ]
   }),
   getters: {
@@ -213,6 +220,12 @@ export const userStore = defineStore('store', {
     },
     getPostModalStatus(state) {
       return state.isShowPostModal
+    },
+    getUsers(state) {
+      if(state.userStatus !== 'all') {
+        return state.users.filter((user) => user.status === state.userStatus)
+      }
+      return state.users
     }
   },
   actions: {
@@ -224,6 +237,12 @@ export const userStore = defineStore('store', {
     },
     setPostModalStatus(status) {
       this.isShowPostModal = status
+    },
+    setUsersStatus(status) {
+      this.userStatus = status
+    },
+    addUser(user) {
+      this.users.push(user)
     }
   },
 })

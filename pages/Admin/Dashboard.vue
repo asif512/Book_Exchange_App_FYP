@@ -1,13 +1,13 @@
 <template>
-    <div class="h-screen bg-gray-100 dashboard ">
-        <div class="flex mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 h-full">
+    <div class="h-screen bg-gray-100 admin-dashboard overflow-hidden ">
+        <div class="flex h-full">
             <!-- Sidebar -->
             <aside class="w-64 bg-indigo-600 text-white px-4 py-6">
                 <h2 class="text-xl font-bold">Dashboard</h2>
                 <ul class="mt-6 space-y-4">
-                    <li @click="handleSelect(page)" v-for="(page, index) in pages" :key="index">
+                    <li @click="handleSelect(status)" v-for="(status, index) in usersStatus" :key="index">
                         <a href="#" class="hover:bg-indigo-400 block p-2 rounded capitalize"
-                            :class="{ 'bg-indigo-400': page === activePage }">{{ page }}</a>
+                            :class="{ 'bg-indigo-400': status === activeUsers }">{{ status }}</a>
                     </li>
                 </ul>
             </aside>
@@ -16,7 +16,7 @@
             <div class="flex-1 flex flex-col">
                 <!-- Header -->
                 <header class="bg-white shadow-md p-4 flex justify-between">
-                    <h1 class="text-2xl font-bold">Welcome to the Dashboard</h1>
+                    <h1 class="text-2xl font-bold">Welcome to the Admin Dashboard</h1>
                     <Menu as="div" class="relative ml-3">
                         <div>
                             <MenuButton
@@ -48,11 +48,11 @@
 
                 <!-- Content -->
                 <main class="flex-1 p-6">
-                    <Table :posts="posts" :page="activePage" />
+                    <UsersTable :activeTab="activeUsers" :users="users" />
                 </main>
 
                 <!-- footer -->
-                <div class="flex flex-1 justify-between sm:justify-end mb-4 mr-4" v-if="posts.length > 10">
+                <div class="flex flex-1 justify-between sm:justify-end mb-4 mr-4" v-if="users.length > 10">
                     <a href="#"
                         class="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0 h-max">Previous</a>
                     <a href="#"
@@ -73,18 +73,18 @@ const store = userStore();
 
 
 // states
-const pages = reactive(['home', 'active', 'sold', 'exchange'])
-const activePage = ref('home')
+const usersStatus = reactive(['all', 'active', 'pending'])
+const activeUsers = ref('all')
 
 
 
 // computed properties
-const posts = computed(() => store.getPosts)
+const users = computed(() => store.getUsers)
 
 
 // methods
-const handleSelect = (page) => {
-    activePage.value = page
-    store.setPostsStatus(page)
+const handleSelect = (user) => {
+    activeUsers.value = user
+    store.setUsersStatus(activeUsers.value)
 }
 </script>
