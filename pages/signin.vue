@@ -31,6 +31,7 @@
 </template>
 
 <script setup>
+const router = useRouter()
 import { userStore } from "/stores/store"
 const store = userStore();
 
@@ -38,7 +39,25 @@ const username = ref("")
 const password = ref("")
 
 const handleLogin = () => {
-    console.log({ name: username.value, password: password.value, users: store.getUsers })
+    const users = store.getUsers
+    if(users && users.some(obj => obj.name.toLowerCase() === username.value.toLowerCase()) && users.some(obj => obj.password.toLowerCase() === password.value.toLowerCase())) {
+        const activeUser = users.find(user => user.name === username.value)
+        localStorage.setItem('activeUser', JSON.stringify(activeUser))
+        store.setNotificationFields({
+            isVissible: true,
+            title: 'successfully',
+            message: 'Login user successfully'
+        })
+        setTimeout(() => {
+            router.push({ path: "/" })
+        }, 2000);
+    } else {
+        store.setNotificationFields({
+            isVissible: true,
+            title: 'failed',
+            message: 'User not exist'
+        })
+    }
 }
 
 onMounted(() => {

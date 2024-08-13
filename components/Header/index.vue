@@ -24,14 +24,14 @@
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           
 
-          <a href="/signin" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 cursor-pointe">Login</a>
+          <a href="/signin" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 cursor-pointe" v-if="!user">Login </a>
           <!-- Profile dropdown -->
-          <Menu as="div" class="relative ml-3">
+          <Menu as="div" class="relative ml-3" v-if="user">
             <div>
               <MenuButton class="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 <span class="absolute -inset-1.5" />
                 <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full" src="/public/images/avator.png" alt="" />
+                <img class="h-8 w-8 rounded-full" :src="user.avatar" alt="avator" />
               </MenuButton>
             </div>
             <transition enter-active-class="transition ease-out duration-200" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
@@ -61,6 +61,20 @@
 </template>
 
 <script setup>
+
+import { userStore } from "/stores/store"
+const store = userStore();
+
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+
+
+const user = ref("")
+
+onMounted(() => {
+ const activeUser =  localStorage.getItem('activeUser')
+ user.value = JSON.parse(activeUser)
+ console.log({user: user.value})
+})
+
 </script>
