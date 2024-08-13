@@ -4,7 +4,7 @@
             <div class="relative mt-4 bg-white shadow-md sm:rounded-lg text-left">
                 <div class="h-2 bg-indigo-400 rounded-t-md"></div>
                 <div class="py-6 px-8">
-                    
+
                     <!-- <label class="block font-semibold capitalize">Email</label> -->
                     <input type="text" placeholder="Email" v-model="email"
                         class=" border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md">
@@ -17,7 +17,7 @@
                     <!-- <label class="block font-semibold capitalize mt-4">Registration Number</label> -->
                     <input type="text" placeholder="Registration number" v-model="registration_number"
                         class=" border w-full h-5 px-3 py-5 mt-5 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md">
-                        <!-- <label class="block font-semibold capitalize mt-2">upload file</label> -->
+                    <!-- <label class="block font-semibold capitalize mt-2">upload file</label> -->
                     <input
                         class="border w-full p-1 h-9 mt-2 hove5:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md0"
                         id="file_input" type="file" @change="uploadFile">
@@ -36,8 +36,8 @@
                     <div class="flex mt-3 justify-between items-baseline">
                         <button type="button"
                             class="rounded-md w-full uppercase bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                            <!-- <NuxtLink to="signin">Login</NuxtLink> -->
-                            <a href="/signin">login </a>
+                            <NuxtLink to="signin">Login</NuxtLink>
+                            <!-- <a href="/signin">login </a> -->
                         </button>
                     </div>
                 </div>
@@ -50,6 +50,8 @@
 <script setup>
 import { userStore } from "/stores/store"
 const store = userStore();
+const router = useRouter()
+
 
 const username = ref("")
 const avatar = ref("")
@@ -70,7 +72,25 @@ const uploadFile = (event) => {
 
     }
 }
+
 const handleRegisteredUser = () => {
+    const users = store.getUsers
+    if (users.length && users.some(obj => obj.name.toLowerCase() === username.value.toLowerCase())) {
+        store.setNotificationFields({
+            isVissible: true,
+            title: 'failed',
+            message: 'User already registered please try with another user name'
+        })
+        return
+    }
+    if (password.value.toLowerCase() !== confirmed_password.value.toLowerCase()) {
+        store.setNotificationFields({
+            isVissible: true,
+            title: 'failed',
+            message: 'Please make sure password and confirmed password should be same!'
+        })
+        return
+    }
     const user = {
         name: username.value,
         avatar: avatar.value,
@@ -82,7 +102,18 @@ const handleRegisteredUser = () => {
         confirmed_password: confirmed_password.value
 
     }
-
     store.addUser(user)
+    setTimeout(() => {
+        store.setNotificationFields({
+            isVissible: true,
+            title: 'successfully',
+            message: 'user registered successfully'
+        })
+        router.push({ path: "/signin" })
+    }, 2000);
 }
+
+onMounted(() => {
+    store.fetchUsers();
+})
 </script>

@@ -4,6 +4,7 @@
     <div class="bg-gray-100">
       <NuxtPage></NuxtPage>
       <Loader v-if="store.isLoading" />
+      <Notification v-if="store.notification.isVissible" />
     </div>
   </NuxtLayout>
 </template>

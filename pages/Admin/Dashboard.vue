@@ -92,6 +92,6 @@ const handleSelect = (user) => {
 
 onMounted(() => {
     store.setLoaderStatus(true)
-    store.getAllUsers();
+    store.fetchUsers();
 })
 </script>

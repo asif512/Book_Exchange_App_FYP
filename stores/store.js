@@ -8,6 +8,11 @@ export const userStore = defineStore('store', {
     activePostsStatus: 'home',
     userStatus: 'all',
     isShowPostModal: false,
+    notification: {
+      isVissible: false,
+      title: 'successfully!',
+      message: 'user registered successfully'
+    },
     posts: [
       {
         id: 1,
@@ -242,8 +247,12 @@ export const userStore = defineStore('store', {
       this.isLoading = status
     },
 
+    setNotificationFields(payload) {
+      this.notification = payload
+    },
+
     // firebase actions
-    async getAllUsers() {
+    async fetchUsers() {
       try {
         const firestore = useNuxtApp().$firestore;
         const querySnapshot = await getDocs(collection(firestore, 'users'));
