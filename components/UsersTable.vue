@@ -94,9 +94,9 @@
 <script setup>
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-
 import { userStore } from "/stores/store"
 const store = userStore();
+
 const props = defineProps({
 	users: {
 		type: Array,

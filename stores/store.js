@@ -8,206 +8,13 @@ export const userStore = defineStore('store', {
     activePostsStatus: 'home',
     userStatus: 'all',
     isShowPostModal: false,
+    selectedPostForUpdate: null,
     notification: {
       isVissible: false,
       title: 'successfully!',
       message: 'user registered successfully'
     },
-    posts: [
-      {
-        id: 1,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl:
-          '1',
-        date: 'Mar 16, 2020',
-        category: 'Marketing',
-        status: 'active',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-      {
-        id: 2,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl: 2,
-        date: 'Mar 16, 2020',
-        category: 'CS',
-        status: 'exchange',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-      {
-        id: 3,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl: 3,
-        date: 'Mar 16, 2020',
-        category: 'computer science',
-        status: 'sold',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-      {
-        id: 4,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl: 4,
-        date: 'Mar 16, 2020',
-        category: 'computer science',
-        status: 'active',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-      {
-        id: 5,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl: 5,
-        date: 'Mar 16, 2020',
-        category: 'computer science',
-        status: 'active',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-      {
-        id: 6,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl: 2,
-        date: 'Mar 16, 2020',
-        category: 'computer science',
-        status: 'active',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-      {
-        id: 7,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl: 1,
-        date: 'Mar 16, 2020',
-        category: 'computer science',
-        status: 'active',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-      {
-        id: 8,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl: 4,
-        date: 'Mar 16, 2020',
-        category: 'computer science',
-        status: 'sold',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-      {
-        id: 9,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl: 3,
-        date: 'Mar 16, 2020',
-        category: 'computer science',
-        status: 'exchange',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-      {
-        id: 10,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl: 2,
-        date: 'Mar 16, 2020',
-        category: 'computer science',
-        status: 'active',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-      {
-        id: 11,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl: 1,
-        date: 'Mar 16, 2020',
-        category: 'computer science',
-        status: 'active',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-      {
-        id: 12,
-        title: 'Boost your conversion rate',
-        description:
-          'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
-        imageUrl: 2,
-        date: 'Mar 16, 2020',
-        category: 'computer science',
-        status: 'sold',
-        author: {
-          id: '111-aaa-222',
-          phone_number: '03120527219',
-          email: 'autor@gmail.com',
-          name: 'Michael Foster',
-        },
-      },
-    ],
+    posts:[],
     users: []
   }),
   getters: {
@@ -239,6 +46,9 @@ export const userStore = defineStore('store', {
     },
     setPostModalStatus(status) {
       this.isShowPostModal = status
+    },
+    setSelectedPostForUpdate(payload) {
+      this.selectedPostForUpdate = payload
     },
     setUsersStatus(status) {
       this.userStatus = status
@@ -291,7 +101,57 @@ export const userStore = defineStore('store', {
       } catch(error) {
         console.log({ error })
       }
-    }
-
+    },
+   
+    // posts
+    async fetchBooks() {
+      try {
+        const firestore = useNuxtApp().$firestore;
+        const querySnapshot = await getDocs(collection(firestore, 'books'));
+        const posts = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        this.posts = posts
+      } catch (error) {
+        console.log({ error })
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async addBooks(payload) {
+      this.isLoading = true
+      try {
+        const firestore = useNuxtApp().$firestore;
+        await addDoc(collection(firestore, 'books'), payload);
+        await this.fetchBooks()
+        this.setNotificationFields({
+          isVissible: true,
+          title: 'successfully',
+          message: 'Book post successfully'
+      })
+      } catch (error) {
+        console.log({ error })
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async deletePost(id) {
+      try{
+        const firestore = useNuxtApp().$firestore;
+        const userDocRef = doc(firestore, 'books', id);
+        await deleteDoc(userDocRef);
+        await this.fetchBooks()
+      } catch(error) {
+        console.log({ error })
+      }
+    },
+    async updateBook(payload, id) {
+      try{
+        const firestore = useNuxtApp().$firestore;
+        const userDocRef = doc(firestore, 'books', id);
+        await updateDoc(userDocRef, payload);
+        await this.fetchBooks()
+      } catch(error) {
+        console.log({ error })
+      }
+    },
   },
 })

@@ -23,7 +23,8 @@
                                 class="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                                 <span class="absolute -inset-1.5" />
                                 <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full"
+                                <img v-if="user" class="h-8 w-8 rounded-full" :src="user.avatar" alt="" />
+                                <img v-else class="h-8 w-8 rounded-full"
                                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                                     alt="" />
                             </MenuButton>
@@ -37,9 +38,9 @@
                             <MenuItems
                                 class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 <MenuItem v-slot="{ active }">
-                                <a href="/"
-                                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign
-                                    out</a>
+                                <span @click="handleLogout"
+                                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer']">Sign
+                                    out</span>
                                 </MenuItem>
                             </MenuItems>
                         </transition>
@@ -72,8 +73,9 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 
 // states
-const pages = reactive(['home', 'active', 'sold', 'exchange'])
+const pages = reactive(['home', 'active', 'sold', 'exchanged'])
 const activePage = ref('home')
+const user = ref(null)
 
 
 
@@ -86,4 +88,16 @@ const handleSelect = (page) => {
     activePage.value = page
     store.setPostsStatus(page)
 }
+
+const handleLogout = () => {
+    localStorage.clear()
+    router.push({ path: "/" })
+}
+
+onMounted(() => {
+    const activeUser = localStorage.getItem('activeUser')
+    user.value = JSON.parse(activeUser)
+    store.setLoaderStatus(true)
+    store.fetchBooks()
+})
 </script>
