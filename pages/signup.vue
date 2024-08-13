@@ -98,6 +98,7 @@ const handleRegisteredUser = () => {
         phone_number: phone_number.value,
         registration_number: registration_number.value,
         status: 'pending',
+        role: 'user',
         password: password.value,
         confirmed_password: confirmed_password.value
 

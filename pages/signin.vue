@@ -40,8 +40,16 @@ const password = ref("")
 
 const handleLogin = () => {
     const users = store.getUsers
-    if(users && users.some(obj => obj.name.toLowerCase() === username.value.toLowerCase()) && users.some(obj => obj.password.toLowerCase() === password.value.toLowerCase())) {
+    if (users && users.some(obj => obj.name.toLowerCase() === username.value.toLowerCase()) && users.some(obj => obj.password.toLowerCase() === password.value.toLowerCase())) {
         const activeUser = users.find(user => user.name === username.value)
+        if (activeUser.status === "pending") {
+            store.setNotificationFields({
+                isVissible: true,
+                title: 'failed',
+                message: 'Currently user not activated'
+            })
+            return
+        }
         localStorage.setItem('activeUser', JSON.stringify(activeUser))
         store.setNotificationFields({
             isVissible: true,
@@ -49,8 +57,12 @@ const handleLogin = () => {
             message: 'Login user successfully'
         })
         setTimeout(() => {
-            router.push({ path: "/" })
-        }, 2000);
+            if(activeUser.role === 'admin') {
+                router.push({ path: "/admin/dashboard" })
+            } else {
+                router.push({ path: "/" })
+            }
+        }, 900);
     } else {
         store.setNotificationFields({
             isVissible: true,

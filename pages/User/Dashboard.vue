@@ -65,11 +65,10 @@
 
 
 <script setup>
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-
+const router = useRouter()
 import { userStore } from "/stores/store"
-
 const store = userStore();
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 
 // states

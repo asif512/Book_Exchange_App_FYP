@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 
 export const userStore = defineStore('store', {
   state: () => ({
@@ -269,6 +269,26 @@ export const userStore = defineStore('store', {
         const firestore = useNuxtApp().$firestore;
         await addDoc(collection(firestore, 'users'), user);
       } catch (error) {
+        console.log({ error })
+      }
+    },
+    async updateUserStatus(user, id) {
+      try{
+        const firestore = useNuxtApp().$firestore;
+        const userDocRef = doc(firestore, 'users', id);
+        await updateDoc(userDocRef, user);
+        await this.fetchUsers()
+      } catch(error) {
+        console.log({ error })
+      }
+    },
+    async deleteUser(id) {
+      try{
+        const firestore = useNuxtApp().$firestore;
+        const userDocRef = doc(firestore, 'users', id);
+        await deleteDoc(userDocRef);
+        await this.fetchUsers()
+      } catch(error) {
         console.log({ error })
       }
     }
