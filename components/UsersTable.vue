@@ -26,6 +26,9 @@
                                         contact</th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 capitalize">
+                                        registraion number</th>
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 capitalize">
                                         Status</th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 capitalize">
@@ -37,13 +40,17 @@
                                 <tr v-for="(user, index) in users" :key="index">
                                     <td
                                         class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 capitalize">
-                                        <img class="h-8 w-8 rounded-full" src="/public/images/avator.png" alt="" /></td>
+                                        <img class="h-8 w-8 rounded-full" :src="user.avatar" alt="" v-if="user.avatar" />
+                                        <img class="h-8 w-8 rounded-full" src="/public/images/avator.png" alt="" v-else />
+                                    </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">{{
                                         user.name }}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">{{
                                         user.email }}</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">{{
                                         user.phone_number }}</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">{{
+                                        user.registration_number }}</td>
 
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize ">
                                         <span class=" text-white text-xs font-semibold py-1 px-2 rounded-full"

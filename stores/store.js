@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
+import { collection, getDocs, addDoc } from 'firebase/firestore';
 
 export const userStore = defineStore('store', {
   state: () => ({
     message: 'hello world',
+    isLoading: false,
     activePostsStatus: 'home',
     userStatus: 'all',
     isShowPostModal: false,
@@ -201,12 +203,7 @@ export const userStore = defineStore('store', {
         },
       },
     ],
-    users: [
-      { id: 1, name: 'john', email: 'johd@gmail.com', avatar: '', status: 'active', phone_number: '123-456-789' },
-      { id: 2, name: 'john', email: 'johd@gmail.com', avatar: '', status: 'active', phone_number: '123-456-789' },
-      { id: 3, name: 'john', email: 'johd@gmail.com', avatar: '', status: 'pending', phone_number: '123-456-789' },
-      { id: 4, name: 'john', email: 'johd@gmail.com', avatar: '', status: 'active', phone_number: '123-456-789' }
-    ]
+    users: []
   }),
   getters: {
     getMessage(state) {
@@ -222,7 +219,7 @@ export const userStore = defineStore('store', {
       return state.isShowPostModal
     },
     getUsers(state) {
-      if(state.userStatus !== 'all') {
+      if (state.userStatus !== 'all') {
         return state.users.filter((user) => user.status === state.userStatus)
       }
       return state.users
@@ -241,8 +238,31 @@ export const userStore = defineStore('store', {
     setUsersStatus(status) {
       this.userStatus = status
     },
-    addUser(user) {
-      this.users.push(user)
+    setLoaderStatus(status) {
+      this.isLoading = status
+    },
+
+    // firebase actions
+    async getAllUsers() {
+      try {
+        const firestore = useNuxtApp().$firestore;
+        const querySnapshot = await getDocs(collection(firestore, 'users'));
+        const users = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        this.users = users
+      } catch (error) {
+        console.log({ error })
+      } finally {
+        this.isLoading = false
+      }
+    },
+    async addUser(user) {
+      try {
+        const firestore = useNuxtApp().$firestore;
+        await addDoc(collection(firestore, 'users'), user);
+      } catch (error) {
+        console.log({ error })
+      }
     }
+
   },
 })

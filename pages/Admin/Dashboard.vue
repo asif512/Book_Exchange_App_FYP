@@ -48,16 +48,19 @@
 
                 <!-- Content -->
                 <main class="flex-1 p-6">
-                    <UsersTable :activeTab="activeUsers" :users="users" />
+                    <div v-if="store.isLoading" class="text-center">loading...</div>
+                    <div v-else>
+                        <UsersTable :activeTab="activeUsers" :users="users" />
+                        <!-- footer -->
+                        <div class="flex flex-1 justify-between sm:justify-end mb-4 mr-4" v-if="users.length > 10">
+                            <a href="#"
+                                class="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0 h-max">Previous</a>
+                            <a href="#"
+                                class="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0 h-max">Next</a>
+                        </div>
+                    </div>
                 </main>
 
-                <!-- footer -->
-                <div class="flex flex-1 justify-between sm:justify-end mb-4 mr-4" v-if="users.length > 10">
-                    <a href="#"
-                        class="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0 h-max">Previous</a>
-                    <a href="#"
-                        class="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0 h-max">Next</a>
-                </div>
             </div>
         </div>
     </div>
@@ -68,7 +71,6 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
 import { userStore } from "/stores/store"
-
 const store = userStore();
 
 
@@ -87,4 +89,9 @@ const handleSelect = (user) => {
     activeUsers.value = user
     store.setUsersStatus(activeUsers.value)
 }
+
+onMounted(() => {
+    store.setLoaderStatus(true)
+    store.getAllUsers();
+})
 </script>

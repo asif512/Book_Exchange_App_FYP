@@ -4,6 +4,7 @@ type IslandComponent<T extends DefineComponent> = T & DefineComponent<{}, {refre
 interface _GlobalComponents {
       'Blogs': typeof import("../components/Blogs.vue")['default']
     'Header': typeof import("../components/Header/index.vue")['default']
+    'Loader': typeof import("../components/Loader.vue")['default']
     'PostModal': typeof import("../components/PostModal.vue")['default']
     'Table': typeof import("../components/Table.vue")['default']
     'UsersTable': typeof import("../components/UsersTable.vue")['default']
@@ -32,6 +33,7 @@ interface _GlobalComponents {
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
       'LazyBlogs': typeof import("../components/Blogs.vue")['default']
     'LazyHeader': typeof import("../components/Header/index.vue")['default']
+    'LazyLoader': typeof import("../components/Loader.vue")['default']
     'LazyPostModal': typeof import("../components/PostModal.vue")['default']
     'LazyTable': typeof import("../components/Table.vue")['default']
     'LazyUsersTable': typeof import("../components/UsersTable.vue")['default']
@@ -74,6 +76,7 @@ declare module 'vue' {
 
 export const Blogs: typeof import("../components/Blogs.vue")['default']
 export const Header: typeof import("../components/Header/index.vue")['default']
+export const Loader: typeof import("../components/Loader.vue")['default']
 export const PostModal: typeof import("../components/PostModal.vue")['default']
 export const Table: typeof import("../components/Table.vue")['default']
 export const UsersTable: typeof import("../components/UsersTable.vue")['default']
@@ -102,6 +105,7 @@ export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
 export const LazyBlogs: typeof import("../components/Blogs.vue")['default']
 export const LazyHeader: typeof import("../components/Header/index.vue")['default']
+export const LazyLoader: typeof import("../components/Loader.vue")['default']
 export const LazyPostModal: typeof import("../components/PostModal.vue")['default']
 export const LazyTable: typeof import("../components/Table.vue")['default']
 export const LazyUsersTable: typeof import("../components/UsersTable.vue")['default']

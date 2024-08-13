@@ -3,10 +3,13 @@
     <!-- <Header></Header> -->
     <div class="bg-gray-100">
       <NuxtPage></NuxtPage>
+      <Loader v-if="store.isLoading" />
     </div>
   </NuxtLayout>
 </template>
-<script setup lang="ts">
+<script setup>
+import { userStore } from "/stores/store"
+const store = userStore();
 useHead({
   title: "Books Exchange App",
   // meta: [

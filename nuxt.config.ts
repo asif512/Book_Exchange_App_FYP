@@ -34,6 +34,10 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  plugins: [
+    '~/plugins/firebase.js',
+  ],
+  
 
   modules: ["nuxt-aos", "@pinia/nuxt"],
 });
