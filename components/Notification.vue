@@ -54,6 +54,6 @@ const handleClose = () => {
 onMounted(() => {
     setTimeout(() => {
         handleClose() 
-    }, 6000);
+    }, 4000);
 })
 </script>

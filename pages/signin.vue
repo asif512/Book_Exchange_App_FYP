@@ -3,7 +3,7 @@
         <div class="relative py-3 w-full max-w-[800px] mx-auto text-center">
             <div class="mt-4 bg-white shadow-md rounded-xl flex overflow-hidden">
                 <div class="h-full min-h-full w-1/2">
-                    <img class="h-[386px] object-cover" src="/public/images/4.jpg" alt="">
+                    <img class="h-[436px] object-cover" src="/public/images/4.jpg" alt="">
                 </div>
                 <div class="py-6 px-8 text-left w-1/2">
                     <label class="block font-bold text-base uppercase">signin form</label>
@@ -19,9 +19,17 @@
                             Login
                         </button>
                     </div>
+                    <div class="flex mt-4 justify-center">
+                        <span class="underline cursor-pointer text-base" @click="handleForgotPassword">
+                            Forgot password?
+                        </span>
+                    </div>
+                    <div class="text-end mt-2">
+
+                    </div>
                     <div class="uppercase text-center my-2">or</div>
                     <div class="flex justify-between items-baseline">
-                        <NuxtLink class="w-full"  to="signup">
+                        <NuxtLink class="w-full" to="signup">
                             <button type="button"
                                 class="rounded-md w-full uppercase bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                 sign up
@@ -45,7 +53,7 @@ const password = ref("")
 
 const handleLogin = () => {
     const users = store.getUsers
-    if(!username.value) {
+    if (!username.value) {
         store.setNotificationFields({
             isVissible: true,
             title: 'failed',
@@ -53,7 +61,7 @@ const handleLogin = () => {
         })
         return
     }
-    if(!password.value) {
+    if (!password.value) {
         store.setNotificationFields({
             isVissible: true,
             title: 'failed',
@@ -78,7 +86,7 @@ const handleLogin = () => {
             message: 'Login user successfully'
         })
         setTimeout(() => {
-            if(activeUser.role === 'admin') {
+            if (activeUser.role === 'admin') {
                 router.push({ path: "/admin/dashboard" })
             } else {
                 router.push({ path: "/" })
@@ -90,6 +98,30 @@ const handleLogin = () => {
             title: 'failed',
             message: 'User not exist'
         })
+    }
+}
+
+const handleForgotPassword = () => {
+    const users = store.getUsers
+    if (!username.value) {
+        store.setNotificationFields({
+            isVissible: true,
+            title: 'failed',
+            message: 'Please enter the username'
+        })
+        return
+    }
+    if(users && !users.some(obj => obj.name.toLowerCase() === username.value.toLowerCase())) {
+        store.setNotificationFields({
+            isVissible: true,
+            title: 'failed',
+            message: 'User not exist'
+        })
+        return  
+    }
+    if(users && users.some(obj => obj.name.toLowerCase() === username.value.toLowerCase())) {
+        const activeUser = users.find(user => user.name === username.value)
+        router.push({path: 'forgotPassword', query: {id: activeUser.id}})
     }
 }
 

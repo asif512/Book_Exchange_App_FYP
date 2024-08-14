@@ -42,8 +42,6 @@ const post = ref(null)
 
 onMounted(() => {
   const id = route.params.slug
-  const posts = store.getPosts
   post.value = store.getPosts.find((p) => p.id == id)
-  console.log({ route })
 })
 </script>
