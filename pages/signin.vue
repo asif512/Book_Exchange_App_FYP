@@ -3,10 +3,10 @@
         <div class="relative py-3 w-full max-w-[800px] mx-auto text-center">
             <div class="mt-4 bg-white shadow-md rounded-xl flex overflow-hidden">
                 <div class="h-full min-h-full w-1/2">
-                    <img class="h-[386px]" src="/public/images/4.jpg" alt="">
+                    <img class="h-[386px] object-cover" src="/public/images/4.jpg" alt="">
                 </div>
                 <div class="py-6 px-8 text-left w-1/2">
-                    <label class="block font-bold text-base uppercase">login form</label>
+                    <label class="block font-bold text-base uppercase">signin form</label>
                     <label class="block font-semibold mt-5">Username:</label>
                     <input type="text" placeholder="username" v-model="username"
                         class=" border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md">
@@ -45,6 +45,22 @@ const password = ref("")
 
 const handleLogin = () => {
     const users = store.getUsers
+    if(!username.value) {
+        store.setNotificationFields({
+            isVissible: true,
+            title: 'failed',
+            message: 'Please enter the username'
+        })
+        return
+    }
+    if(!password.value) {
+        store.setNotificationFields({
+            isVissible: true,
+            title: 'failed',
+            message: 'Please enter the user password'
+        })
+        return
+    }
     if (users && users.some(obj => obj.name.toLowerCase() === username.value.toLowerCase()) && users.some(obj => obj.password.toLowerCase() === password.value.toLowerCase())) {
         const activeUser = users.find(user => user.name === username.value)
         if (activeUser.status === "pending") {
