@@ -14,21 +14,21 @@
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
-            <!-- <img class="h-8 w-auto" src="/public/images/avator.png" alt="Your Company" /> -->
-          </div>
-          <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-            <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-            <a href="#"
-              class="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900">About</a>
-            <a href="#"
-              class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700">Contact</a>
+            <NuxtLink to="/">
+            <img width="100" height="100" src="/public/logos/3.png" alt="Your Company" />
+          </NuxtLink>
           </div>
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
-
-          <a href="/signin" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 cursor-pointe"
-            v-if="!user">Login </a>
+          <NuxtLink to="contact" class="inline-flex items-center pr-5 text-sm font-medium text-gray-900 cursor-pointer">
+            Contact
+          </NuxtLink>
+          <NuxtLink to="about" class="inline-flex items-center pr-5 text-sm font-medium text-gray-900 cursor-pointer">
+            About
+          </NuxtLink>
+          <NuxtLink v-if="!user" to="signin"
+            class="inline-flex items-center pr-5 text-sm font-medium text-gray-900 cursor-pointer">Login
+          </NuxtLink>
           <!-- Profile dropdown -->
           <Menu as="div" class="relative ml-3" v-if="user">
             <div>
@@ -36,7 +36,7 @@
                 class="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 <span class="absolute -inset-1.5" />
                 <span class="sr-only">Open user menu</span>
-                
+
                 <img class="h-8 w-8 rounded-full" :src="user.avatar" alt="avator" />
               </MenuButton>
             </div>
@@ -48,8 +48,10 @@
                 class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 
                 <MenuItem v-slot="{ active }">
-                <a href="/user/dashboard"
-                  :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer']">Dashbaord</a>
+                  <NuxtLink to="user/dashboard">
+                    <span
+                      :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer']">Dashbaord</span>
+                  </NuxtLink>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                 <span @click="handleLogout"

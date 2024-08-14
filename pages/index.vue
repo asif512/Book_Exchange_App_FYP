@@ -8,14 +8,14 @@
 </template>
 
 <script setup>
-import { userStore } from "/stores/store";
-const store = userStore()
+// import { userStore } from "/stores/store";
+// const store = userStore()
 
 
-onMounted(() => {
-  store.setLoaderStatus(true)
-  store.fetchBooks();
-})
+// onMounted(() => {
+//   store.setLoaderStatus(true)
+//   store.fetchBooks();
+// })
 
 </script>
 

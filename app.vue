@@ -28,4 +28,10 @@ useHead({
     }
   ]
 });
+
+
+onMounted(() => {
+  store.setLoaderStatus(true)
+  store.fetchBooks();
+})
 </script>

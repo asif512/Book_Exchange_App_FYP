@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 pt-2 h-full pb-32 ">
+  <div class="bg-gray-100 h-full pb-32 ">
     <Header></Header>
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 pb-10">
       <div class="mx-auto max-w-7xl px-6 lg:px-8" v-if="post">

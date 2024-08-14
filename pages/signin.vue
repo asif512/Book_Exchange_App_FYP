@@ -18,10 +18,12 @@
                     </div>
                     <div class="uppercase text-center my-4">or</div>
                     <div class="flex mt-5 justify-between items-baseline">
-                        <button type="button"
-                            class="rounded-md w-full uppercase bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                            <NuxtLink to="signup">sign up</NuxtLink>
-                        </button>
+                        <NuxtLink class="w-full"  to="signup">
+                            <button type="button"
+                                class="rounded-md w-full uppercase bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                                sign up
+                            </button>
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
