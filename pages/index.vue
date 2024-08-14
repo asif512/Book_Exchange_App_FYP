@@ -8,11 +8,15 @@
 </template>
 
 <script setup>
+import { userStore } from "/stores/store";
+const store = userStore()
 
+
+onMounted(() => {
+  store.setLoaderStatus(true)
+  store.fetchBooks();
+})
 
 </script>
 
-<style scoped lang="scss">
-
-
-</style>
+<style scoped lang="scss"></style>

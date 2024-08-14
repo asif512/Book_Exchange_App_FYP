@@ -6,7 +6,7 @@
         <NuxtLink :to="`posts/${post.id}`" class="w-full">
 
           <div class="relative w-full">
-            <img :src="`/images/${post.imageUrl}.png`" alt=""
+            <img :src="post.image_url" alt=""
               class="aspect-[16/9] w-full h-[200px] min-w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]" />
             <div class="absolute inset-0 rounded-2xl" />
           </div>
@@ -22,10 +22,10 @@
               </h3>
             </div>
             <div class="relative mt-8 flex items-center gap-x-4">
-              <img src="/public/images/avator.png" alt="" class="h-10 w-10 rounded-full bg-gray-100" />
+              <img :src="post.author_avator" alt="" class="h-10 w-10 rounded-full bg-gray-100" />
               <div class="text-sm leading-6">
                 <p class="font-semibold text-gray-900">
-                    {{ post.author.name }}
+                    {{ post.author_name }}
                 </p>
               </div>
             </div>
@@ -43,5 +43,6 @@ const store = userStore()
 
 
 const posts = computed(() => store.getPosts)
+
 
 </script>

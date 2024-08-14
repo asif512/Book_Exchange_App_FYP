@@ -7,7 +7,7 @@
           <div class="w-full lg:max-w-lg lg:flex-auto">
   
             <img
-              :src="`/images/${post.imageUrl}.png`"
+              :src="post.image_url"
               alt=""
               class="mt-16 aspect-[6/5] w-full rounded-2xl bg-gray-50 object-cover"
                />
@@ -16,13 +16,13 @@
             <p class="mt-4 text-xl leading-8 text-gray-600">{{post.description}}.</p>
             <p class="mt-4 text-xl leading-8 text-gray-600">Post Date: <span class="ml-4">{{post.date}}</span></p>
             <div class="w-full flex-none text-lg font-semibold tracking-tight text-gray-900 mt-6">
-                    Author Name: <span class="ml-4">{{ post.author.name }}</span>
+                    Author Name: <span class="ml-4">{{ post.author_name }}</span>
                   </div>
                   <div class="w-full flex-none text-lg font-semibold tracking-tight text-gray-900">
-                    Author Email: <span class="ml-4">{{ post.author.email }}</span>
+                    Author Email: <span class="ml-4">{{ post.author_email }}</span>
                   </div>
                   <div class="w-full flex-none text-lg font-semibold tracking-tight text-gray-900">
-                    Author Contact: <span class="ml-4">{{ post.author.phone_number }}</span>
+                    Author Contact: <span class="ml-4">{{ post.authore_phone_number }}</span>
                   </div>
           </div>
         </div>

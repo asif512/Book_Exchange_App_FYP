@@ -98,6 +98,6 @@ onMounted(() => {
     const activeUser = localStorage.getItem('activeUser')
     user.value = JSON.parse(activeUser)
     store.setLoaderStatus(true)
-    store.fetchBooks()
+    store.fetchBooksByUser()
 })
 </script>

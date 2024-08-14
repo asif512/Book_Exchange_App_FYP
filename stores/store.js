@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { collection, getDocs, addDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, doc, updateDoc, deleteDoc, query, where } from 'firebase/firestore';
 
 export const userStore = defineStore('store', {
   state: () => ({
@@ -14,7 +14,7 @@ export const userStore = defineStore('store', {
       title: 'successfully!',
       message: 'user registered successfully'
     },
-    posts:[],
+    posts: [],
     users: []
   }),
   getters: {
@@ -83,27 +83,46 @@ export const userStore = defineStore('store', {
       }
     },
     async updateUserStatus(user, id) {
-      try{
+      try {
         const firestore = useNuxtApp().$firestore;
         const userDocRef = doc(firestore, 'users', id);
         await updateDoc(userDocRef, user);
         await this.fetchUsers()
-      } catch(error) {
+      } catch (error) {
         console.log({ error })
       }
     },
     async deleteUser(id) {
-      try{
+      try {
         const firestore = useNuxtApp().$firestore;
         const userDocRef = doc(firestore, 'users', id);
         await deleteDoc(userDocRef);
         await this.fetchUsers()
-      } catch(error) {
+      } catch (error) {
         console.log({ error })
       }
     },
-   
+
     // posts
+    async fetchBooksByUser() {
+      const activeUser = localStorage.getItem('activeUser')
+      const user = JSON.parse(activeUser)
+      try {
+        const firestore = useNuxtApp().$firestore;
+        const usersQuery = query(
+          collection(firestore, 'books'),
+          where('author_id', '==', user.id)
+        );
+        const querySnapshot = await getDocs(usersQuery);
+        const posts = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        this.posts = posts
+      } catch (error) {
+        console.log({ error })
+      } finally {
+        this.isLoading = false
+      }
+    },
+
     async fetchBooks() {
       try {
         const firestore = useNuxtApp().$firestore;
@@ -121,12 +140,12 @@ export const userStore = defineStore('store', {
       try {
         const firestore = useNuxtApp().$firestore;
         await addDoc(collection(firestore, 'books'), payload);
-        await this.fetchBooks()
+        await this.fetchBooksByUser()
         this.setNotificationFields({
           isVissible: true,
           title: 'successfully',
           message: 'Book post successfully'
-      })
+        })
       } catch (error) {
         console.log({ error })
       } finally {
@@ -134,22 +153,22 @@ export const userStore = defineStore('store', {
       }
     },
     async deletePost(id) {
-      try{
+      try {
         const firestore = useNuxtApp().$firestore;
         const userDocRef = doc(firestore, 'books', id);
         await deleteDoc(userDocRef);
-        await this.fetchBooks()
-      } catch(error) {
+        await this.fetchBooksByUser()
+      } catch (error) {
         console.log({ error })
       }
     },
     async updateBook(payload, id) {
-      try{
+      try {
         const firestore = useNuxtApp().$firestore;
         const userDocRef = doc(firestore, 'books', id);
         await updateDoc(userDocRef, payload);
-        await this.fetchBooks()
-      } catch(error) {
+        await this.fetchBooksByUser()
+      } catch (error) {
         console.log({ error })
       }
     },
