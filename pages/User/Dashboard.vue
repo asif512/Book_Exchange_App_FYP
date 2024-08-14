@@ -3,6 +3,9 @@
         <div class="flex  h-full">
             <!-- Sidebar -->
             <aside class="w-64 bg-indigo-600 text-white px-4 py-6">
+                <!-- <NuxtLink to="/">
+                    <img width="100" height="100" src="/public/logos/3.png" alt="Your Company" />
+                </NuxtLink> -->
                 <h2 class="text-xl font-bold">Dashboard</h2>
                 <ul class="mt-6 space-y-4">
                     <li @click="handleSelect(page)" v-for="(page, index) in pages" :key="index">
@@ -42,7 +45,14 @@
                                     :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer']">Sign
                                     out</span>
                                 </MenuItem>
+                                <MenuItem v-slot="{ active }">
+                                <NuxtLink to="/user/setting">
+                                    <span
+                                        :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer']">Setting</span>
+                                </NuxtLink>
+                                </MenuItem>
                             </MenuItems>
+
                         </transition>
                     </Menu>
                 </header>
@@ -80,7 +90,7 @@ const user = ref(null)
 
 
 // computed properties
-const posts = computed(() => store.getPosts)
+const posts = computed(() => store.getUserPosts)
 
 
 // methods

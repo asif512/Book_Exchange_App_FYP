@@ -15,6 +15,7 @@ export const userStore = defineStore('store', {
       message: 'user registered successfully'
     },
     posts: [],
+    userPosts: [],
     users: []
   }),
   getters: {
@@ -22,10 +23,13 @@ export const userStore = defineStore('store', {
       return state.message
     },
     getPosts(state) {
-      if (state.activePostsStatus !== 'home') {
-        return state.posts.filter((post) => post.status === state.activePostsStatus)
-      }
       return state.posts
+    },
+    getUserPosts(state) {
+      if (state.activePostsStatus !== 'home') {
+        return state.userPosts.filter((post) => post.status === state.activePostsStatus)
+      }
+      return state.userPosts
     },
     getPostModalStatus(state) {
       return state.isShowPostModal
@@ -82,6 +86,15 @@ export const userStore = defineStore('store', {
         console.log({ error })
       }
     },
+    async updateUser(user) {
+      try {
+        const firestore = useNuxtApp().$firestore;
+        const userDocRef = doc(firestore, 'users', user.id);
+        await updateDoc(userDocRef, user);
+      } catch (error) {
+        console.log({ error })
+      }
+    },
     async updateUserStatus(user, id) {
       try {
         const firestore = useNuxtApp().$firestore;
@@ -115,7 +128,7 @@ export const userStore = defineStore('store', {
         );
         const querySnapshot = await getDocs(usersQuery);
         const posts = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        this.posts = posts
+        this.userPosts = posts
       } catch (error) {
         console.log({ error })
       } finally {
@@ -141,6 +154,7 @@ export const userStore = defineStore('store', {
         const firestore = useNuxtApp().$firestore;
         await addDoc(collection(firestore, 'books'), payload);
         await this.fetchBooksByUser()
+        this.fetchBooks()
         this.setNotificationFields({
           isVissible: true,
           title: 'successfully',

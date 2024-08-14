@@ -15,18 +15,18 @@
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
             <NuxtLink to="/">
-            <img width="100" height="100" src="/public/logos/3.png" alt="Your Company" />
-          </NuxtLink>
+              <img width="100" height="100" src="/public/logos/3.png" alt="Your Company" />
+            </NuxtLink>
           </div>
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <NuxtLink to="contact" class="inline-flex items-center pr-5 text-sm font-medium text-gray-900 cursor-pointer">
+          <NuxtLink to="/contact" class="inline-flex items-center pr-5 text-sm font-medium text-gray-900 cursor-pointer">
             Contact
           </NuxtLink>
-          <NuxtLink to="about" class="inline-flex items-center pr-5 text-sm font-medium text-gray-900 cursor-pointer">
+          <NuxtLink to="/about" class="inline-flex items-center pr-5 text-sm font-medium text-gray-900 cursor-pointer">
             About
           </NuxtLink>
-          <NuxtLink v-if="!user" to="signin"
+          <NuxtLink v-if="!user" to="/signin"
             class="inline-flex items-center pr-5 text-sm font-medium text-gray-900 cursor-pointer">Login
           </NuxtLink>
           <!-- Profile dropdown -->
@@ -48,10 +48,16 @@
                 class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 
                 <MenuItem v-slot="{ active }">
-                  <NuxtLink to="user/dashboard">
-                    <span
-                      :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer']">Dashbaord</span>
-                  </NuxtLink>
+                <NuxtLink to="/user/dashboard">
+                  <span
+                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer']">Dashbaord</span>
+                </NuxtLink>
+                </MenuItem>
+                <MenuItem v-slot="{ active }">
+                <NuxtLink to="/user/setting">
+                  <span
+                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer']">Setting</span>
+                </NuxtLink>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                 <span @click="handleLogout"
@@ -65,9 +71,8 @@
       </div>
     </div>
 
-    <DisclosurePanel class="sm:hidden">
+    <!-- <DisclosurePanel class="sm:hidden">
       <div class="space-y-1 pb-4 pt-2">
-        <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
         <DisclosureButton as="a" href="#"
           class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700">
           About</DisclosureButton>
@@ -75,7 +80,7 @@
           class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700">
           Contact</DisclosureButton>
       </div>
-    </DisclosurePanel>
+    </DisclosurePanel> -->
   </Disclosure>
 </template>
 

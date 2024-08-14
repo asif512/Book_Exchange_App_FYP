@@ -76,6 +76,14 @@ const uploadFile = (event) => {
 
 const handleRegisteredUser = () => {
     const users = store.getUsers
+    if(!username.value || !email.value || !password.value || !confirmed_password.value ) {
+        store.setNotificationFields({
+            isVissible: true,
+            title: 'failed',
+            message: 'User name, email, password and confirmed password are required!'
+        })
+        return
+    }
     if (users.length && users.some(obj => obj.name.toLowerCase() === username.value.toLowerCase())) {
         store.setNotificationFields({
             isVissible: true,
