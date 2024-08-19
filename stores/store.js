@@ -139,7 +139,11 @@ export const userStore = defineStore('store', {
     async fetchBooks() {
       try {
         const firestore = useNuxtApp().$firestore;
-        const querySnapshot = await getDocs(collection(firestore, 'books'));
+        const usersQuery = query(
+          collection(firestore, 'books'),
+          where('status', '==', 'active')
+        );
+        const querySnapshot = await getDocs(usersQuery);
         const posts = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         this.posts = posts
       } catch (error) {
@@ -188,3 +192,6 @@ export const userStore = defineStore('store', {
     },
   },
 })
+
+// 2022-kiu-bs2664@kiu.edu.pk
+// gis@664

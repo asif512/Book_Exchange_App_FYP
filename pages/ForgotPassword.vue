@@ -72,5 +72,6 @@ const handleForgotPassword = async () => {
     setTimeout(() => {
         router.push('/signin')
     }, 1000);
+    console.log({ id, users, user, payload })
 }
 </script>
