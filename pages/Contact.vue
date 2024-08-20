@@ -1,7 +1,7 @@
 <template>
   <div class="contact-page">
     <Header></Header>
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 pb-10 pt-6">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-16 pb-10 pt-6">
       <h2 class="font-bold uppercase text-2xl mb-4">Contact us</h2>
       <h2 class="font-bold uppercase mt-2">We’re Here to Help!</h2>
       <p class="mt-2">Have questions, feedback, or need assistance? Feel free to reach out to us through any of the

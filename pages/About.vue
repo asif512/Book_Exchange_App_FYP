@@ -1,7 +1,7 @@
 <template>
   <div class="about-page">
     <Header></Header>
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 pb-10 pt-6">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-16 pb-10 pt-6">
       <h2 class="font-bold uppercase text-2xl mb-4">About us</h2>
       <h2 class="font-bold uppercase mt-2">Welcome to Book Exchange App!</h2>
       <p class="mt-2">At Book Exchange App, we're passionate about connecting book lovers and fostering a
@@ -29,7 +29,8 @@
       <h2 class="uppercase font-bold mt-6">Join Us</h2>
       <p class="mt-2">Start exploring today and become part of our growing community of book lovers. Whether you're
         looking to find new books or share your collection with others, Book Exchange App is here to help.</p>
-
+        
+        <h2 class="uppercase font-semibold mt-6">Happy Reading!</h2>
     </div>
   </div>
 </template>
