@@ -12,15 +12,15 @@
 						<table class="min-w-full divide-y divide-gray-300">
 							<thead class="bg-gray-50">
 								<tr>
-									<th scope="col" class="px-3 py-3.5  text-left text-sm font-semibold text-gray-900 capitalize">
+									<th scope="col" class="px-3 py-3.5  text-left text-sm font-semibold text-gray-900">
 										avatar</th>
-									<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 capitalize">
+									<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
 										name</th>
-									<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 capitalize">
+									<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
 										email</th>
-									<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 capitalize">
+									<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
 										contact</th>
-									<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 capitalize">
+									<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
 										registraion number</th>
 									<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 capitalize">
 										Status</th>
