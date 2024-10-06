@@ -36,13 +36,13 @@
 											<img class="h-8 w-8 rounded-full" :src="user.avatar" alt="" v-if="user.avatar" />
 											<img class="h-8 w-8 rounded-full" src="/public/images/avator.png" alt="" v-else />
 										</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">{{
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{
 											user.name }}</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">{{
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{
 											user.email }}</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">{{
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{
 											user.phone_number }}</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">{{
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{
 											user.registration_number }}</td>
 	
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize ">
