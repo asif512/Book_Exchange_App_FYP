@@ -7,8 +7,8 @@
                     <div class="relative mt-4 bg-white shadow-md sm:rounded-lg text-left">
                         <div class="h-2 bg-indigo-400 rounded-t-md"></div>
                         <div class="py-6 px-8">:
-                            <div class="preview">
-                                <img class="rounded-full max-w-[200px] max-h-[200px]" width="200" height="200" :src="avatar" alt="preview">
+                            <div class="preview w-[200px] h-[200px] rounded-full overflow-hidden">
+                                <img class="w-full h-full" :src="avatar" alt="preview">
                             </div>
                              <label class="block font-semibold capitalize mt-4">avatar:</label>
                             <input
