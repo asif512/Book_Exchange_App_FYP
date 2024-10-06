@@ -43,9 +43,9 @@
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 capitalize">
                                             {{ post.title }}</td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">{{
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 ">{{
                                             post.category }}</td>
-                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">{{
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 ">{{
                                             post.date }}</td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize ">
                                             <span class=" text-white text-xs font-semibold py-1 px-2 rounded-full"
