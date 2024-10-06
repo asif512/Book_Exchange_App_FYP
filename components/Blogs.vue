@@ -52,7 +52,7 @@ const posts = computed(() => {
   if (searchQuery.value === '') {
     return store.getPosts
   }
-  return store.getPosts.filter((p) => p.title.includes(searchQuery.value))
+  return store.getPosts.filter((p) => p.title.toLowerCase().includes(searchQuery.value.toLowerCase()))
 })
 
 </script>
